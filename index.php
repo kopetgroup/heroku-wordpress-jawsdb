@@ -145,17 +145,19 @@ if(isset($_GET['insert'])){
   /*
     Get Database Size
   */
-  $cursor = $mongo->$db->command(['dbStats' => 1]);
-  $storage= '';
-  foreach($cursor->toArray() as $c){
-    $storage = $c;
+  $cursor = $action->aggregate([
+    [
+      '$project' => [
+        'count'   => ['$size' => '$category']
+      ]
+    ],
+    ['$sort'  => ['count' => -1]],
+    ['$limit' => 10]
+  ]);
+  $top = [];
+  foreach($cursor as $c){
+    $top[] = $c;
   }
-  $storage = (array) $storage;
-  $dbsize  = [
-    'data'    => $this->byte_format($storage['dataSize']),
-    'storage' => $this->byte_format($storage['storageSize'])
-  ];
-
   print_r($dbsize);
 
 /*
