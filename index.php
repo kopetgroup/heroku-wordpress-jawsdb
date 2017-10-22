@@ -118,6 +118,28 @@ if(isset($_GET['insert'])){
     'data'  => $dt
   ];
 
+/*
+  Bulk Edit
+*/
+}elseif(isset($_GET['bulkedit'])){
+
+  $data     = (array) json_decode( file_get_contents('php://input') );
+  if(is_array($data)){
+    $i = 1;
+    $es = [];
+    foreach($data as $t){
+      $es[] = $action->updateOne(
+        ['_id' => $t->_id,],
+        ['$set' => (array) $t]        
+      );
+    $i++;}
+  }
+
+  //export
+  $res = [
+    'status' => 'success',
+    'data'  => $es
+  ];
 
 /*
   Edit
