@@ -138,29 +138,6 @@ if(isset($_GET['insert'])){
   ];
 
 /*
-  Status
-*/
-}elseif(isset($_GET['status'])){
-
-  /*
-    Get Database Size
-  */
-  $cursor = $action->aggregate([
-    [
-      '$project' => [
-        'count'   => ['$size' => '$category']
-      ]
-    ],
-    ['$sort'  => ['count' => -1]],
-    ['$limit' => 10]
-  ]);
-  $top = [];
-  foreach($cursor as $c){
-    $top[] = $c;
-  }
-  print_r($top);
-
-/*
   Else
 */
 }else{
