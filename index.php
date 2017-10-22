@@ -26,6 +26,7 @@ if(isset($_GET['insert'])){
 
     $i = 1;
     foreach($data as $t){
+      $t->_id = md5($t);
       $t->ts = $ts;
       try {
         $is = $action->insertOne((array)$t);
