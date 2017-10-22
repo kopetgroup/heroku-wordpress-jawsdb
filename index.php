@@ -26,7 +26,7 @@ if(isset($_GET['insert'])){
 
     $i = 1;
     foreach($data as $t){
-      $t->_id = md5(json_encode($t));
+      $t->_id = sha1($t['_id']);
       $t->ts = $ts;
       try {
         $is = $action->insertOne((array)$t);
