@@ -1,0 +1,19 @@
+{
+  "name": "Heroku Crot",
+  "description": "heroku php & mongodb",
+  "keywords": [
+    "MongoDB",
+    "mLab"
+  ],
+  "repository": "https://github.com/kopetgroup/heroku-mongo.git",
+  "success_url": "/",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    "mongolab"
+  ]
+}
