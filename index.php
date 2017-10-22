@@ -138,6 +138,27 @@ if(isset($_GET['insert'])){
   ];
 
 /*
+  Status
+*/
+}elseif(isset($_GET['status'])){
+
+  /*
+    Get Database Size
+  */
+  $cursor = $mongo->$db->command(['dbStats' => 1]);
+  $storage= '';
+  foreach($cursor->toArray() as $c){
+    $storage = $c;
+  }
+  $storage = (array) $storage;
+  $dbsize  = [
+    'data'    => $this->byte_format($storage['dataSize']),
+    'storage' => $this->byte_format($storage['storageSize'])
+  ];
+
+  print_r($dbsize);
+
+/*
   Else
 */
 }else{
