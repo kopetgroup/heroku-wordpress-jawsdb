@@ -158,7 +158,7 @@ if(isset($_GET['insert'])){
   foreach($cursor as $c){
     $top[] = $c;
   }
-  print_r($dbsize);
+  print_r($top);
 
 /*
   Else
