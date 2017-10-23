@@ -18,18 +18,32 @@
  * @package WordPress
  */
 
+$dbx = str_replace('mysql://','',$_SERVER['JAWSDB_MARIA_URL']);
+$dbu = explode(':',$dbx);
+$dbu = $dbu[0];
+
+$dbp = explode('@',$dbu[1]);
+$dbp = $dbp[0];
+
+$dbh = explode('@',$_SERVER['JAWSDB_MARIA_URL']);
+$dbh = explode(':',$dbh[1]);
+$dbh = $dbh[0];
+
+$dbn = basename($_SERVER['JAWSDB_MARIA_URL']);
+
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
+define('DB_NAME', $dbn);
 
 /** MySQL database username */
-define('DB_USER', 'username_here');
+define('DB_USER', $dbu);
 
 /** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+define('DB_PASSWORD', $dbp);
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', $dbh);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
