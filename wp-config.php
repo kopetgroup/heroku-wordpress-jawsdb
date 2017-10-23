@@ -17,12 +17,13 @@
  *
  * @package WordPress
  */
+ //mysql://uy8igx5c9btstzlo:vy4ecji78nd6m9zz@jlg7sfncbhyvga14.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/npfg0qow4jrpfjk9
 
 $dbx = str_replace('mysql://','',$_SERVER['JAWSDB_MARIA_URL']);
-$dbu = explode(':',$dbx);
-$dbu = $dbu[0];
+$dbe = explode(':',$dbx);
+$dbu = $dbe[0];
 
-$dbp = explode('@',$dbu[1]);
+$dbp = explode('@',$dbe[1]);
 $dbp = $dbp[0];
 
 $dbh = explode('@',$_SERVER['JAWSDB_MARIA_URL']);
@@ -31,7 +32,7 @@ $dbh = $dbh[0];
 
 $dbn = basename($_SERVER['JAWSDB_MARIA_URL']);
 
-echo $dbu.' - '.$dbp.'  - '.$dbh.' - '.$dbn;
+//echo $dbu.' - '.$dbp.'  - '.$dbh.' - '.$dbn;
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
