@@ -31,6 +31,7 @@ $dbh = $dbh[0];
 
 $dbn = basename($_SERVER['JAWSDB_MARIA_URL']);
 
+echo $dbu.' - '.$dbp.'  - '.$dbh.' - '.$dbn;
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
